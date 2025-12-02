@@ -1,0 +1,17 @@
+{
+  "name": "example-node-api",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Example Node.js API using Togglekit",
+  "scripts": {
+    "dev": "echo 'Node API example not yet implemented'",
+    "build": "echo 'Build not yet implemented'",
+    "test": "echo 'Tests not yet implemented'",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@togglekit/flags-client-node": "workspace:*"
+  },
+  "devDependencies": {}
+}
+

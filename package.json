@@ -1,0 +1,34 @@
+{
+  "name": "togglekit",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A self-hosted feature flag system with Rust evaluation engine and TypeScript SDKs",
+  "packageManager": "pnpm@8.15.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "nx run-many --target=dev --parallel=10",
+    "build": "nx run-many --target=build",
+    "test": "nx run-many --target=test",
+    "lint": "nx run-many --target=lint"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.56.0",
+    "nx": "^18.0.4",
+    "typescript": "^5.3.3"
+  },
+  "keywords": [
+    "feature-flags",
+    "toggles",
+    "rust",
+    "typescript",
+    "self-hosted"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+

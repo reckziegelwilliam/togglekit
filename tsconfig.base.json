@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": ["ES2022"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@togglekit/flags-core-ts": ["packages/flags-core-ts/src/index.ts"],
+      "@togglekit/flags-client-node": ["packages/flags-client-node/src/index.ts"],
+      "@togglekit/flags-client-web": ["packages/flags-client-web/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "build", "out", "target"]
+}
+

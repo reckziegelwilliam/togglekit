@@ -1,0 +1,19 @@
+{
+  "name": "@togglekit/flags-client-web",
+  "version": "0.0.0",
+  "description": "Web/Browser SDK for Togglekit feature flags",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo 'Tests not yet implemented'",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@togglekit/flags-core-ts": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
+

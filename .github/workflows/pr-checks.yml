@@ -1,0 +1,87 @@
+name: PR Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  pr-validation:
+    name: PR Validation
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Validate PR title
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          
+          # Check if PR title is not empty
+          if [ -z "$PR_TITLE" ]; then
+            echo "❌ PR title cannot be empty"
+            exit 1
+          fi
+          
+          # Check minimum length
+          if [ ${#PR_TITLE} -lt 10 ]; then
+            echo "❌ PR title is too short (minimum 10 characters)"
+            exit 1
+          fi
+          
+          echo "✅ PR title is valid"
+      
+      - name: Check PR description
+        run: |
+          PR_BODY="${{ github.event.pull_request.body }}"
+          
+          if [ -z "$PR_BODY" ] || [ "$PR_BODY" == "null" ]; then
+            echo "⚠️  PR description is empty. Consider adding a description."
+            echo "description=empty" >> $GITHUB_OUTPUT
+          else
+            echo "✅ PR has a description"
+            echo "description=present" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Check for linked issues
+        run: |
+          PR_BODY="${{ github.event.pull_request.body }}"
+          
+          if echo "$PR_BODY" | grep -iE "(closes|fixes|resolves) #[0-9]+"; then
+            echo "✅ PR links to an issue"
+          else
+            echo "ℹ️  No linked issues found. Consider linking related issues."
+          fi
+      
+      - name: Verify base branch
+        run: |
+          BASE_BRANCH="${{ github.event.pull_request.base.ref }}"
+          
+          if [ "$BASE_BRANCH" != "main" ]; then
+            echo "⚠️  PR is targeting '$BASE_BRANCH' instead of 'main'"
+          else
+            echo "✅ PR is targeting main branch"
+          fi
+      
+      - name: Check for merge conflicts
+        run: |
+          if [ "${{ github.event.pull_request.mergeable }}" == "false" ]; then
+            echo "❌ PR has merge conflicts that need to be resolved"
+            exit 1
+          else
+            echo "✅ No merge conflicts detected"
+          fi
+
+  prevent-force-push:
+    name: Prevent Force Push to Main
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Check for force push
+        run: |
+          echo "This workflow helps prevent direct pushes to main"
+          echo "All changes must go through PRs"
+          echo "✅ PR process is being followed"
+

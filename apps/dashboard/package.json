@@ -1,0 +1,15 @@
+{
+  "name": "@togglekit/dashboard",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Togglekit admin dashboard for managing flags",
+  "scripts": {
+    "dev": "echo 'Dashboard dev server not yet implemented'",
+    "build": "echo 'Dashboard build not yet implemented'",
+    "test": "echo 'Dashboard tests not yet implemented'",
+    "lint": "eslint src"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
+

@@ -1,0 +1,17 @@
+{
+  "name": "@togglekit/flags-core-ts",
+  "version": "0.0.0",
+  "description": "TypeScript core evaluator for feature flags",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo 'Tests not yet implemented'",
+    "lint": "eslint src"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
+
