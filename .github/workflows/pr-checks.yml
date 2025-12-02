@@ -48,7 +48,7 @@ jobs:
         run: |
           PR_BODY="${{ github.event.pull_request.body }}"
           
-          if echo "$PR_BODY" | grep -iE "(closes|fixes|resolves) #[0-9]+"; then
+          if echo "${PR_BODY}" | grep -iE "(closes|fixes|resolves) #[0-9]+"; then
             echo "✅ PR links to an issue"
           else
             echo "ℹ️  No linked issues found. Consider linking related issues."
