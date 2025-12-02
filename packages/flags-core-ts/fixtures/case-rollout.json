@@ -1,0 +1,98 @@
+{
+  "description": "Percentage rollout tests",
+  "config": {
+    "rollout-50": {
+      "key": "rollout-50",
+      "defaultValue": false,
+      "rules": [
+        {
+          "conditions": [],
+          "percentage": 50,
+          "value": true
+        }
+      ]
+    },
+    "rollout-25-premium": {
+      "key": "rollout-25-premium",
+      "defaultValue": false,
+      "rules": [
+        {
+          "conditions": [
+            {
+              "attribute": "plan",
+              "operator": "eq",
+              "value": "premium"
+            }
+          ],
+          "percentage": 25,
+          "value": true
+        }
+      ]
+    }
+  },
+  "testCases": [
+    {
+      "name": "User in rollout bucket (bucket <= 50)",
+      "flagKey": "rollout-50",
+      "context": {
+        "userId": "user-1",
+        "attributes": {}
+      },
+      "expected": {
+        "reason": "rollout"
+      },
+      "note": "Actual value depends on hash function, test checks consistency"
+    },
+    {
+      "name": "Same user always gets same result",
+      "flagKey": "rollout-50",
+      "context": {
+        "userId": "user-1",
+        "attributes": {}
+      },
+      "expected": {
+        "reason": "rollout"
+      },
+      "note": "Must return same value as previous test with same userId"
+    },
+    {
+      "name": "No userId means excluded from rollout",
+      "flagKey": "rollout-50",
+      "context": {
+        "attributes": {}
+      },
+      "expected": {
+        "value": false,
+        "reason": "default"
+      }
+    },
+    {
+      "name": "Rollout with conditions - premium user in rollout",
+      "flagKey": "rollout-25-premium",
+      "context": {
+        "userId": "premium-user-1",
+        "attributes": {
+          "plan": "premium"
+        }
+      },
+      "expected": {
+        "note": "Value depends on bucket, but reason should be rollout or rollout_excluded"
+      }
+    },
+    {
+      "name": "Rollout with conditions - free user excluded",
+      "flagKey": "rollout-25-premium",
+      "context": {
+        "userId": "free-user-1",
+        "attributes": {
+          "plan": "free"
+        }
+      },
+      "expected": {
+        "value": false,
+        "reason": "default"
+      }
+    }
+  ]
+}
+

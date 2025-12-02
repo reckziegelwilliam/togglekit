@@ -1,0 +1,182 @@
+{
+  "description": "All condition operator tests",
+  "config": {
+    "test-operators": {
+      "key": "test-operators",
+      "defaultValue": false,
+      "rules": [
+        {
+          "conditions": [
+            {
+              "attribute": "age",
+              "operator": "gt",
+              "value": 18
+            }
+          ],
+          "value": true
+        }
+      ]
+    }
+  },
+  "testCases": [
+    {
+      "name": "eq - equals",
+      "conditions": [
+        {
+          "attribute": "country",
+          "operator": "eq",
+          "value": "US"
+        }
+      ],
+      "context": {
+        "attributes": {
+          "country": "US"
+        }
+      },
+      "expected": true
+    },
+    {
+      "name": "neq - not equals",
+      "conditions": [
+        {
+          "attribute": "country",
+          "operator": "neq",
+          "value": "US"
+        }
+      ],
+      "context": {
+        "attributes": {
+          "country": "UK"
+        }
+      },
+      "expected": true
+    },
+    {
+      "name": "in - value in array",
+      "conditions": [
+        {
+          "attribute": "country",
+          "operator": "in",
+          "value": ["US", "UK", "CA"]
+        }
+      ],
+      "context": {
+        "attributes": {
+          "country": "UK"
+        }
+      },
+      "expected": true
+    },
+    {
+      "name": "gt - greater than",
+      "conditions": [
+        {
+          "attribute": "age",
+          "operator": "gt",
+          "value": 18
+        }
+      ],
+      "context": {
+        "attributes": {
+          "age": 25
+        }
+      },
+      "expected": true
+    },
+    {
+      "name": "gte - greater than or equal",
+      "conditions": [
+        {
+          "attribute": "age",
+          "operator": "gte",
+          "value": 18
+        }
+      ],
+      "context": {
+        "attributes": {
+          "age": 18
+        }
+      },
+      "expected": true
+    },
+    {
+      "name": "lt - less than",
+      "conditions": [
+        {
+          "attribute": "age",
+          "operator": "lt",
+          "value": 18
+        }
+      ],
+      "context": {
+        "attributes": {
+          "age": 16
+        }
+      },
+      "expected": true
+    },
+    {
+      "name": "lte - less than or equal",
+      "conditions": [
+        {
+          "attribute": "age",
+          "operator": "lte",
+          "value": 18
+        }
+      ],
+      "context": {
+        "attributes": {
+          "age": 18
+        }
+      },
+      "expected": true
+    },
+    {
+      "name": "contains - string contains substring",
+      "conditions": [
+        {
+          "attribute": "email",
+          "operator": "contains",
+          "value": "@example.com"
+        }
+      ],
+      "context": {
+        "attributes": {
+          "email": "user@example.com"
+        }
+      },
+      "expected": true
+    },
+    {
+      "name": "contains - array contains value",
+      "conditions": [
+        {
+          "attribute": "tags",
+          "operator": "contains",
+          "value": "beta"
+        }
+      ],
+      "context": {
+        "attributes": {
+          "tags": ["alpha", "beta", "gamma"]
+        }
+      },
+      "expected": true
+    },
+    {
+      "name": "missing attribute fails (except neq)",
+      "conditions": [
+        {
+          "attribute": "missing",
+          "operator": "eq",
+          "value": "test"
+        }
+      ],
+      "context": {
+        "attributes": {}
+      },
+      "expected": false
+    }
+  ]
+}
+
