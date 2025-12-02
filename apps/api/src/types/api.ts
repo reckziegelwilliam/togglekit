@@ -3,7 +3,6 @@
  */
 
 import { FlagConfig, Context, EvaluationResult } from '@togglekit/flags-core-ts';
-import { Environment } from '../db/types';
 
 /**
  * Request query for SDK config endpoint
