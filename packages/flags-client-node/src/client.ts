@@ -246,10 +246,11 @@ export async function createFlagClient(
 
   const client = new FlagClient(config, options);
   
-  // Start automatic refresh if configured
-  if (options.apiUrl && options.apiKey) {
-    (client as any).startRefresh();
-  }
+    // Start automatic refresh if configured
+    if (options.apiUrl && options.apiKey) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (client as any).startRefresh();
+    }
 
   return client;
 }

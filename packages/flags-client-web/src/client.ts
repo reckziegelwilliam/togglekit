@@ -233,6 +233,7 @@ export function createFlagClient(
     
     // Start refresh in background if configured
     if (options.apiUrl && options.apiKey && options.enableRefresh) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (client as any).startRefresh();
     }
     
@@ -251,6 +252,7 @@ export function createFlagClient(
       
       // Start refresh if enabled
       if (options.enableRefresh) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (client as any).startRefresh();
       }
       
