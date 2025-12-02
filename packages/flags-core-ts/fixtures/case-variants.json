@@ -1,0 +1,123 @@
+{
+  "description": "Variant flag tests",
+  "config": {
+    "pricing-layout": {
+      "key": "pricing-layout",
+      "defaultValue": "control",
+      "variants": [
+        { "key": "control" },
+        { "key": "layout-a" },
+        { "key": "layout-b" }
+      ],
+      "rules": [
+        {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "eq",
+              "value": "US"
+            }
+          ],
+          "variant": "layout-a"
+        },
+        {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "eq",
+              "value": "UK"
+            }
+          ],
+          "variant": "layout-b"
+        }
+      ]
+    },
+    "theme": {
+      "key": "theme",
+      "defaultValue": "light",
+      "variants": [
+        { "key": "light" },
+        { "key": "dark" },
+        { "key": "auto" }
+      ],
+      "rules": [
+        {
+          "conditions": [
+            {
+              "attribute": "preference",
+              "operator": "eq",
+              "value": "dark"
+            }
+          ],
+          "variant": "dark"
+        }
+      ]
+    }
+  },
+  "testCases": [
+    {
+      "name": "Default variant",
+      "flagKey": "pricing-layout",
+      "context": {
+        "attributes": {
+          "country": "CA"
+        }
+      },
+      "expected": {
+        "value": "control",
+        "reason": "default"
+      }
+    },
+    {
+      "name": "US gets layout-a",
+      "flagKey": "pricing-layout",
+      "context": {
+        "attributes": {
+          "country": "US"
+        }
+      },
+      "expected": {
+        "value": "layout-a",
+        "reason": "rule_match"
+      }
+    },
+    {
+      "name": "UK gets layout-b",
+      "flagKey": "pricing-layout",
+      "context": {
+        "attributes": {
+          "country": "UK"
+        }
+      },
+      "expected": {
+        "value": "layout-b",
+        "reason": "rule_match"
+      }
+    },
+    {
+      "name": "Theme - dark preference",
+      "flagKey": "theme",
+      "context": {
+        "attributes": {
+          "preference": "dark"
+        }
+      },
+      "expected": {
+        "value": "dark",
+        "reason": "rule_match"
+      }
+    },
+    {
+      "name": "Theme - default (no preference)",
+      "flagKey": "theme",
+      "context": {
+        "attributes": {}
+      },
+      "expected": {
+        "value": "light",
+        "reason": "default"
+      }
+    }
+  ]
+}
+

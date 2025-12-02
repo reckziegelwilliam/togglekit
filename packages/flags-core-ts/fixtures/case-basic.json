@@ -1,0 +1,80 @@
+{
+  "description": "Basic boolean flag tests",
+  "config": {
+    "simple-on": {
+      "key": "simple-on",
+      "defaultValue": true
+    },
+    "simple-off": {
+      "key": "simple-off",
+      "defaultValue": false
+    },
+    "with-rule": {
+      "key": "with-rule",
+      "defaultValue": false,
+      "rules": [
+        {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "eq",
+              "value": "US"
+            }
+          ],
+          "value": true
+        }
+      ]
+    }
+  },
+  "testCases": [
+    {
+      "name": "Simple flag - always on",
+      "flagKey": "simple-on",
+      "context": {
+        "attributes": {}
+      },
+      "expected": {
+        "value": true,
+        "reason": "default"
+      }
+    },
+    {
+      "name": "Simple flag - always off",
+      "flagKey": "simple-off",
+      "context": {
+        "attributes": {}
+      },
+      "expected": {
+        "value": false,
+        "reason": "default"
+      }
+    },
+    {
+      "name": "Rule matches - US user",
+      "flagKey": "with-rule",
+      "context": {
+        "attributes": {
+          "country": "US"
+        }
+      },
+      "expected": {
+        "value": true,
+        "reason": "rule_match"
+      }
+    },
+    {
+      "name": "Rule doesn't match - UK user",
+      "flagKey": "with-rule",
+      "context": {
+        "attributes": {
+          "country": "UK"
+        }
+      },
+      "expected": {
+        "value": false,
+        "reason": "default"
+      }
+    }
+  ]
+}
+
