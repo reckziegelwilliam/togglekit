@@ -1,0 +1,14 @@
+{
+  "extends": ["../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*", "dist", "node_modules"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parserOptions": {
+        "project": ["packages/flags-client-node/tsconfig.json"]
+      },
+      "rules": {}
+    }
+  ]
+}
+
