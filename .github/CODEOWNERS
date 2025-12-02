@@ -1,0 +1,40 @@
+# CODEOWNERS file
+# 
+# This file defines individuals or teams that are responsible for code in this repository.
+# Code owners are automatically requested for review when someone opens a pull request
+# that modifies code that they own.
+#
+# Learn more: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+# These owners will be requested for review unless a later match takes precedence
+*       @liamreckziegel
+
+# Apps
+/apps/api/              @liamreckziegel
+/apps/dashboard/        @liamreckziegel
+
+# Packages
+/packages/              @liamreckziegel
+
+# Examples
+/examples/              @liamreckziegel
+
+# Rust crates (if/when developed)
+/crates/                @liamreckziegel
+
+# CI/CD and configuration files
+/.github/               @liamreckziegel
+*.yml                   @liamreckziegel
+*.yaml                  @liamreckziegel
+*.json                  @liamreckziegel
+
+# Documentation
+*.md                    @liamreckziegel
+/docs/                  @liamreckziegel
+
+# Security-sensitive files
+pnpm-lock.yaml          @liamreckziegel
+package-lock.json       @liamreckziegel
+yarn.lock               @liamreckziegel
+
