@@ -34,7 +34,11 @@ jobs:
       
       - name: Check PR description
         run: |
-          PR_BODY="${{ github.event.pull_request.body }}"
+          # Use heredoc to safely capture PR body without shell interpretation
+          PR_BODY=$(cat << 'EOF'
+          ${{ github.event.pull_request.body }}
+          EOF
+          )
           
           if [ -z "$PR_BODY" ] || [ "$PR_BODY" == "null" ]; then
             echo "⚠️  PR description is empty. Consider adding a description."
@@ -46,9 +50,13 @@ jobs:
       
       - name: Check for linked issues
         run: |
-          PR_BODY="${{ github.event.pull_request.body }}"
+          # Use heredoc to safely capture PR body without shell interpretation
+          PR_BODY=$(cat << 'EOF'
+          ${{ github.event.pull_request.body }}
+          EOF
+          )
           
-          if echo "$PR_BODY" | grep -iE "(closes|fixes|resolves) #[0-9]+"; then
+          if echo "${PR_BODY}" | grep -iE "(closes|fixes|resolves) #[0-9]+"; then
             echo "✅ PR links to an issue"
           else
             echo "ℹ️  No linked issues found. Consider linking related issues."

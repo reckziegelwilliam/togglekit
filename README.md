@@ -17,7 +17,9 @@ Togglekit gives you a minimal, modern alternative to heavy SaaS feature flag pla
 
 Planned components:
 
-- ✅ TypeScript core evaluator
+- ✅ TypeScript core evaluator (M2)
+- ✅ Node SDK (M3)
+- ✅ Web SDK with React hooks (M3)
 - ⬜ Rust core engine
 - ⬜ Node N-API binding
 - ⬜ WASM engine for web
