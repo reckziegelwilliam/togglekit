@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "../../.eslintrc.json"
+  ],
+  "ignorePatterns": [
+    "!**/*",
+    "dist",
+    "node_modules",
+    "coverage"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["apps/api/tsconfig.json"]
+      }
+    }
+  ]
+}
+

@@ -1,0 +1,21 @@
+# Build output
+dist
+*.tsbuildinfo
+
+# Dependencies
+node_modules
+
+# Environment
+.env
+.env.local
+
+# Database
+*.db
+*.db-journal
+
+# Test coverage
+coverage
+
+# Logs
+*.log
+

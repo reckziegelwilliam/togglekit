@@ -6,12 +6,26 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "echo 'API dev server not yet implemented'",
-    "build": "echo 'API build not yet implemented'",
-    "test": "echo 'API tests not yet implemented'",
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "test": "jest",
     "lint": "eslint src"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@togglekit/flags-core-ts": "workspace:*",
+    "fastify": "^4.25.2",
+    "@fastify/cors": "^8.5.0",
+    "better-sqlite3": "^9.2.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.11",
+    "ts-jest": "^29.1.1"
+  }
 }
 
