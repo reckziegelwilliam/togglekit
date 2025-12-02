@@ -1,0 +1,12 @@
+# Compiled output
+dist/
+*.tsbuildinfo
+
+# Generated files in src (from composite builds)
+src/**/*.d.ts
+src/**/*.d.ts.map
+src/**/*.js
+src/**/*.js.map
+!src/**/*.test.ts
+!src/**/*.test.js
+
